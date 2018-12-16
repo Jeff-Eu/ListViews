@@ -19,7 +19,6 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by User on 3/14/2017.
@@ -53,14 +52,14 @@ public class PersonListAdapter extends ArrayAdapter<Person> {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
+
+        //sets up the image loader library
+        setupImageLoader();
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-        //sets up the image loader library
-        setupImageLoader();
 
         //get the persons information
         String name = getItem(position).getName();
@@ -105,7 +104,7 @@ public class PersonListAdapter extends ArrayAdapter<Person> {
 
         //create the imageloader object
         ImageLoader imageLoader = ImageLoader.getInstance();
-        ;
+
         int defaultImage = mContext.getResources().getIdentifier("@drawable/image_failed",null,mContext.getPackageName());
 
         //create display options
